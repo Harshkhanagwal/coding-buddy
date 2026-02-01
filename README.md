@@ -4,7 +4,7 @@
 
 ### 🔗 Live Demo
 
-Check out the live application here: **[Insert Your Live Link Here]**
+Check out the live application here: **[Coding Buddy](https://coding-buddy-ai.netlify.app)**
 
 
 ---

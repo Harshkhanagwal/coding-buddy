@@ -46,3 +46,13 @@
     font-size: 20px;
   }
 }
+
+
+.gitlogo{
+    font-size: 24px;
+    color:#000 ;
+    transition: ease 0.3s;
+}
+.gitlogo:hover{ 
+    color: #fbbf24;
+}
