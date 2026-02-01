@@ -1,0 +1,23 @@
+.main-container{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+
+}
+
+.left-container{
+    height: calc(85vh);
+    width: calc(70% - 10px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.right-container{
+    display: flex;
+    height: calc(85vh);
+    width: calc(30% - 10px);
+    overflow: hidden;
+}
+
+
+

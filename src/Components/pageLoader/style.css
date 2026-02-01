@@ -1,0 +1,62 @@
+.loading {
+  background-color: rgba(255, 0, 0, 0);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.loading div {
+  background-color: rgb(255, 217, 0);
+  width: 20px;
+  height: 20px;
+  margin: 20px;
+  border-radius: 50px;
+  animation-name: load912355;
+  animation-duration: .9s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  text-align: center;
+  justify-content: center;
+}
+
+.loading .a {
+  animation-delay: .3s;
+}
+
+.loading .u {
+  animation-delay: .6s;
+}
+
+@keyframes load912355 {
+  0% {
+    transform: translateY(50px) scale(1);
+  }
+
+  100% {
+    transform: translateY(10px) scale(1.8) rotate(360deg);
+  }
+}
+
+.page-loader{
+    width: 100vw;
+    height: 100vh;
+    background-color: #0000005e;
+    position: fixed;
+    z-index: 99999;
+    display: flex
+    ;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+}
+
+.note{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: rgb(255, 158, 158);
+    border: 1px solid red;
+    border-radius: 12px;
+    font-size: 10px;
+}

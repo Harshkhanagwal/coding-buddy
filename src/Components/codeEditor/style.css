@@ -1,0 +1,138 @@
+.editorbox{
+    border: 2px solid #facc15;   
+    width: 100%;   
+    margin: 20px 0;
+    height: calc(60vh - 20px);
+    overflow: hidden;
+    border-radius: 12px;
+    padding: 20px;
+}
+.editor-toolbar{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.editor-toolbar select{
+    width: 200px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 16px;
+    border: 2px solid #fffbec;
+    background-color: #fffbec ;
+}
+
+.editor-toolbar .explain-btn {
+  width: 120px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 40px;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #facc15;
+
+  transition: all 0.25s ease;
+}
+
+.editor-toolbar .explain-btn:hover {
+  background-color: #fbbf24; /* slightly deeper yellow */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(250, 204, 21, 0.35);
+}
+
+.editor-toolbar .explain-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(250, 204, 21, 0.25);
+}
+
+
+.exicution-area{
+    display: flex;
+    width: 100%;
+    height: calc(30vh - 20px);
+    gap: 20px;
+}
+
+.exicution-bx{
+    width: calc(50% - 10px);
+    height: 100%;
+    border: 2px solid #facc15;  
+    border-radius: 12px;
+    position: relative;
+    padding: 20px;
+    overflow: hidden;
+}
+
+
+.exicution-bx textarea{
+    min-width: 100%;
+    max-width: 100%;
+    min-height: calc(100% - 48px);
+    max-height: 100%;
+    border: none;
+    margin-top: 38px;
+}
+.exicution-bx h3{
+    background-color: #fff6d0 !important;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    border-radius: 12 12 0 0 ;
+    padding:  10px 20px;
+    top: 0;
+}
+.exicution-bx textarea:focus{ 
+    outline: none;
+}
+.runcode{
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: rgb(50, 201, 0);
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    gap: 10px;
+}
+.runcode:active{
+    scale: 0.9;
+}
+.runcode:disabled{
+    opacity: 0.4;
+    cursor:not-allowed;
+}
+.runcode:disabled:active{
+    scale: 1;
+ }
+.editor-toolbar-buttons{
+    display: flex;
+    gap: 20px;
+}
+
+.output-txt{
+    font-size: 16px;
+    color: #9a9a9a;
+}
+
+.output-area{
+    padding-top:58px;
+}
+
+
+.language-selector{
+    display: flex
+    ;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.selector-lable{
+    font-size: 12px;
+}
