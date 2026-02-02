@@ -30,7 +30,7 @@ const Chatbox = ({ response, question, setQuestion,loading ,explainCode }) => {
 
 
             
-                <form className="chatInput">
+                <form className="chatInput" >
 
                     <input type="text" value={question} onChange={(e) => setQuestion(e.target.value)} placeholder='Ask your doubt' />
                     <button type='submit' onClick={handleDoubt} className='sendchat-btn'>

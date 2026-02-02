@@ -4,6 +4,7 @@ import Editor from "@monaco-editor/react";
 import { VscRunAll } from "react-icons/vsc";
 import axios from 'axios';
 import PageLoader from "../pageLoader/PageLoader";
+import RunnerLoader from "../RunnerLoader/RunnerLoader";
 
 const Codeeditor = ({ setCode, code, explainCode, isLoading }) => {
     const [language, setLanguage] = useState("text");
@@ -12,6 +13,8 @@ const Codeeditor = ({ setCode, code, explainCode, isLoading }) => {
     const [pageLoader, setPageLoader] = useState(false);
     const [input, setInput] = useState('');
     const [output, setOutput] = useState('');
+    const [io, setIo] = useState(true)
+    const [running, setRunning] = useState(false)
 
     const API = axios.create({
         baseURL: "https://emkc.org/api/v2/piston"
@@ -51,15 +54,20 @@ const Codeeditor = ({ setCode, code, explainCode, isLoading }) => {
         if (val === "text") {
             setLanguage("text");
             setSelectedLangData(null);
+            setIo(true)
         } else {
             const langObj = JSON.parse(val);
             setLanguage(langObj.language);
             setSelectedLangData(langObj);
+            setIo(false)
         }
     };
 
+
+
     const runCode = async () => {
         if (!selectedLangData) return;
+        setRunning(true)
         try {
             const res = await API.post('/execute', {
                 "language": selectedLangData.language,
@@ -71,6 +79,9 @@ const Codeeditor = ({ setCode, code, explainCode, isLoading }) => {
         } catch (error) {
             alert("Not able to Execute the Code");
             console.error(error);
+        } finally{
+            setRunning(false)
+
         }
     };
 
@@ -84,8 +95,8 @@ const Codeeditor = ({ setCode, code, explainCode, isLoading }) => {
                 <div className="editor-toolbar">
                     <div className="language-selector">
                         <p className="selector-lable">Select Language</p>
-                        <select 
-                            value={selectedLangData ? JSON.stringify(selectedLangData) : "text"} 
+                        <select
+                            value={selectedLangData ? JSON.stringify(selectedLangData) : "text"}
                             onChange={handleLanguageChange}
                         >
                             <option value="text">Take Help with AI : Any Language</option>
@@ -97,12 +108,20 @@ const Codeeditor = ({ setCode, code, explainCode, isLoading }) => {
                         </select>
                     </div>
                     <div className="editor-toolbar-buttons">
-                        <button 
-                            disabled={language === "text"} 
-                            className="runcode" 
+                        <button
+                            disabled={language === "text"}
+                            className="runcode"
                             onClick={runCode}
                         >
-                            Run <VscRunAll />
+                            
+                            {
+                                running ? <RunnerLoader/> : (
+                                <>
+                                    Run <VscRunAll />
+                                </>
+                                )
+                            }
+                            
                         </button>
                         <button
                             className="explain-btn"
@@ -122,17 +141,17 @@ const Codeeditor = ({ setCode, code, explainCode, isLoading }) => {
                 />
             </div>
             <div className="exicution-area">
-                <div className="input-area exicution-bx">
+                <div className={io ? "input-area exicution-bx disabled-comp" : "input-area exicution-bx "}>
                     <h3>Input</h3>
-                    <textarea value={input} onChange={(e) => setInput(e.target.value)} name="input" placeholder="Enter your Input here"></textarea>
+                    <textarea value={input} disabled={io} onChange={(e) => setInput(e.target.value)} name="input" placeholder={io ? "Please select your language" : "Enter your Input here"}></textarea>
                 </div>
-                <div className="output-area exicution-bx">
+                <div className={io ? "output-area exicution-bx disabled-comp" : "output-area exicution-bx"}>
                     <h3>Output</h3>
                     {output ? (
                         <pre className="output-txt-content">{output}</pre>
                     ) : (
-                        <p className="output-txt">Run your code to see the output</p>
-                    )} 
+                        <p className="output-txt">{io ? "select your language to run the code" : "Run your code to see the output"}</p>
+                    )}
                 </div>
             </div>
         </>
